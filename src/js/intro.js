@@ -10,6 +10,9 @@ var TogglClient = function(token, options){
             throw new Error('You must provide your API token to use the Toggl API');
         }
         config.auth = 'Basic ' + btoa(token + ':api_token');
+
+        // If a default workspace is not defined, we look up the list of available
+        // workspaces and pick the first one
         if (typeof options === 'undefined' || typeof options.defaultWorkspace === 'undefined') {
             workspaces.all().then(function(workspaces){
                 config.defaultWorkspace = workspaces[0].id;
