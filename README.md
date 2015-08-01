@@ -66,4 +66,4 @@ Toggl.clients.getProjects(clientId).then(function(projectArray){
 ### License
 
 
-JSToggl is licensed under [GPL v2](https://github.com/simonwillcock/jstoggl/blob/master/LICENSE.txt)
+JSToggl may be freely distributed under the [GPL v2](https://github.com/simonwillcock/jstoggl/blob/master/LICENSE.txt) license.
