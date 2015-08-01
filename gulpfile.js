@@ -52,7 +52,7 @@ gulp.task('compress', ['jshint'], function(){
 gulp.task('scripts', ['jshint'], function(){
   return gulp.src(paths.js)
   .pipe(concat('toggl.js'))
-  .pipe(wrap('(function(){ "use strict"; <%= contents %> })();'))
+  // .pipe(wrap('(function(){ "use strict"; <%= contents %> })();'))
   .pipe(strip())
   .pipe(header(banner, {pkg: pkg}))
   .pipe(beautify({indentSize: 2}))
