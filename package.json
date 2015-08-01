@@ -1,20 +1,27 @@
 {
-    "name": "JSToggl",
-    "version": "0.1.0",
-    "description": "An API wrapper to simplify interactions with the Toggl API",
-    "author": "Simon Willcock <simon@willcock.com.au>",
-    "repository": {
-        "type" : "git",
-        "url": "https://github.com/simonwillcock/jstoggl"
-    },
-    "keywords": [
-        "toggl",
-        "jquery"
-
-    ],
+  "name": "JSToggl",
+  "version": "0.1.0",
+  "description": "An API wrapper to simplify interactions with the Toggl API",
+  "author": "Simon Willcock <simon@willcock.com.au>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonwillcock/jstoggl"
+  },
+  "keywords": [
+    "toggl",
+    "jquery"
+  ],
   "devDependencies": {
     "browser-sync": "^2.8.1",
     "gulp": "^3.9.0",
-    "gulp-jshint": "^1.11.2"
+    "gulp-beautify": "^1.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.2.2",
+    "gulp-jshint": "^1.11.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-comments": "^1.0.1",
+    "gulp-uglify": "^1.2.0",
+    "gulp-wrap": "^0.11.0",
+    "jshint-stylish": "^2.0.1"
   }
 }
