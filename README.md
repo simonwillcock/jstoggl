@@ -40,7 +40,7 @@ Toggl.timers.stop(timerId).then(function(){
 ```javascript
 var timerId;
 Toggl.timers.current().then(function(timer){
-    if(timer)
+    if(timer.data !== null)
         timerId = timer.data.id;
     }
 });
