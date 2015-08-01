@@ -1,0 +1,19 @@
+/*
+ * Users
+ * https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md
+ *
+ */
+var users = {
+    url: function(){
+        return _buildUrl('me');
+    },
+
+    /*
+     * https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data
+     */
+    current: function(){
+        var promise = _request(_buildUrl('me'));
+        return promise;
+    }
+
+};
