@@ -1,6 +1,6 @@
 {
   "name": "JSToggl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An API wrapper to simplify interactions with the Toggl API",
   "author": "Simon Willcock <simon@willcock.com.au>",
   "repository": {

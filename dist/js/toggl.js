@@ -1,7 +1,7 @@
 /**
  ** JSToggl - An API wrapper to simplify interactions with the Toggl API
  ** @author Simon Willcock <simon@willcock.com.au>
- ** @version v0.1.0
+ ** @version v0.1.1
  **/
 
 var TogglClient = function (token, options) {
@@ -16,6 +16,9 @@ var TogglClient = function (token, options) {
       throw new Error('You must provide your API token to use the Toggl API');
     }
     config.auth = 'Basic ' + btoa(token + ':api_token');
+
+
+
     if (typeof options === 'undefined' || typeof options.defaultWorkspace === 'undefined') {
       workspaces.all().then(function (workspaces) {
         config.defaultWorkspace = workspaces[0].id;
@@ -272,8 +275,12 @@ var TogglClient = function (token, options) {
     },
 
 
-    current: function () {
-      var promise = _request(_buildUrl('me'));
+    current: function (includeRelated) {
+      var fragment = 'me';
+      if (includeRelated === true) {
+        fragment += '?with_related_data=true';
+      }
+      var promise = _request(_buildUrl(fragment));
       return promise;
     }
 
