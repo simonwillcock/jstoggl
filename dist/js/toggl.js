@@ -198,30 +198,37 @@ var TogglClient = function (token, options) {
     },
 
 
-    create: function (description, tagArray) {
-      var data = {
-        'time_entry': {
-          'description': description,
-          'tags': tagArray,
-          'wid': config.defaultWorkspace,
-          'created_with': config.clientName
-        }
+    create: function (params) {
+      var requiredFields = ['start', 'duration'];
+
+      var defaults = {
+        'wid': config.defaultWorkspace,
+        'created_with': config.clientName
       };
+
+      var data = {
+        'time_entry': $.extend({}, defaults, params)
+      };
+
+      for (var i = requiredFields.length - 1; i >= 0; i--) {
+        if (typeof data.time_entry[requiredFields[i]] === undefined) {
+          throw new Error('Missing required field: ' + requiredFields[i]);
+        }
+      }
+
       var promise = _request(_buildUrl('time_entries'), 'POST', JSON.stringify(data));
       return promise;
     },
 
 
-    start: function (description, tagArray, duration, start) {
+    start: function (params) {
+      var defaults = {
+        'wid': config.defaultWorkspace,
+        'created_with': config.clientName
+      };
+
       var data = {
-        'time_entry': {
-          'description': description,
-          'tags': tagArray,
-          'duration': duration,
-          'start': start,
-          'wid': config.defaultWorkspace,
-          'created_with': config.clientName
-        }
+        'time_entry': $.extend({}, defaults, params)
       };
       var promise = _request(_buildUrl('time_entries/start'), 'POST', JSON.stringify(data));
       return promise;
@@ -241,16 +248,14 @@ var TogglClient = function (token, options) {
     },
 
 
-    update: function (id, description, tagArray, duration, start) {
+    update: function (id, params) {
+      var defaults = {
+        'wid': config.defaultWorkspace,
+        'created_with': config.clientName
+      };
+
       var data = {
-        'time_entry': {
-          'description': description,
-          'tags': tagArray,
-          'duration': duration,
-          'start': start,
-          'wid': config.defaultWorkspace,
-          'created_with': config.clientName
-        }
+        'time_entry': $.extend({}, defaults, params)
       };
       var promise = _request(_buildUrl('time_entries', id), 'PUT', JSON.stringify(data));
       return promise;
@@ -268,6 +273,7 @@ var TogglClient = function (token, options) {
       throw new Error('Timer.getBetween not yet implemented');
     }
   };
+
 
   var users = {
     url: function () {
